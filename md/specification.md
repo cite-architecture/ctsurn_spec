@@ -1,3 +1,15 @@
+# The Canonical Text Services URN specification, version @version@ #
+
+**Content**:  This document defines version @version@ of the Canonical Text Services URN.
+
+**Editors**:  Christopher Blackwell and Neel Smith, Center for Hellenic Studies Technical Working Group leads.
+
+**Date**:  March, 2009.
+
+**License**:  This specification and the associated Relax NG schemas are avaiable under the terms of the Creative Commons Attribution-ShareAlike 4.0 International License, <http://creativecommons.org/licenses/by-sa/4.0/deed.en_US>.
+
+## Background ##
+
 
 > Uniform Resource Names (URNs) are intended to serve as persistent, location-independent, resource identifiers.
 
@@ -164,3 +176,21 @@ language may not be equivalent to Unicode code points
 in that text.
 
 
+
+
+## Links
+
+- The Canonical Text Services protocol specification: <http://www.homermultitext.org/hmt-docs/specifications/cts> 
+- Maven settings for using the release version of this specification and its schemas from a maven client: 
+    - group: `org.homermultitext`
+    - artifact: `ctsurn-spec`
+    - version: `3.0`
+-  Known mirrors of this specification:
+    - from the Homer Multitext project:  <http://www.homermultitext.org/hmt-docs/specifications/ctsurn>
+    - from Furman University: <http://folio.furman.edu/projects/citedocs/ctsurn>
+    - from the College of the Holy Cross:  <http://shot.holycross.edu/hmt-docs/specifications/ctsurn>
+
+
+## Acknowledgments ##
+
+The authors would especially like to acknowledge contributions from Gabriel Weaver in developing the URN notation.
