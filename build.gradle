@@ -7,7 +7,7 @@ apply plugin: "maven"
 //defaultTasks : 'usage'
 
 group = "org.homermultitext"
-version = "1.0"
+version = "2.0.rc.1"
 
 
 if (hasProperty('pub')) {
@@ -60,6 +60,7 @@ task release(type: Zip, dependsOn: [setUp1, setUp2])  {
       println "Made zip file for release."
     }    
 }
+
 
 artifacts {
   archives release
