@@ -15,7 +15,7 @@ The following sequence is not yet pacakged as a build task, but can easily be do
 
 	gradle release
 	cp md/manifest.json build/pkg
-	cd buildpkg
+	cd build/pkg
 	bfdocs manifest.json
 
 
