@@ -190,8 +190,8 @@ A valid CTS URN identifying an equivalent range of text:
 
 - Maven settings for using the release version of this specification and its schemas from a maven client: 
     - group: `org.homermultitext`
-    - artifact: `ctsurn-spec`
-    - version: `3.0`
+    - artifact: `ctsurn_spec`
+    - version: `@version@`
 -  Nexus repository to proxy this release:  <http://beta.hpcc.uh.edu/nexus/content/repositories/releases>
 -  Known mirrors of this specification:
     - from the Homer Multitext project:  <http://www.homermultitext.org/hmt-docs/specifications/ctsurn>
