@@ -196,7 +196,7 @@ A valid CTS URN identifying an equivalent range of text:
 -  Known mirrors of this specification:
     - from the Homer Multitext project:  <http://www.homermultitext.org/hmt-docs/specifications/ctsurn>
     - from Furman University: <http://folio.furman.edu/projects/citedocs/ctsurn>
-    - from the College of the Holy Cross:  <http://shot.holycross.edu/hmt-docs/specifications/ctsurn>
+    - from the College of the Holy Cross:  <http://shot.holycross.edu/hmt/hmt-docs/specifications/ctsurn>
 - RFC2141, "URN Syntax": <http://www.ietf.org/rfc/rfc2141.txt> 
 - The Canonical Text Services protocol specification: <http://www.homermultitext.org/hmt-docs/specifications/cts> 
 - Report of the IFLA Study Group on the Functional Requirements for Bibliographic Records (FRBR): <http://www.ifla.org/publications/functional-requirements-for-bibliographic-records>
