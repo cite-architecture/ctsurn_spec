@@ -26,7 +26,7 @@ The work component is a hierarchy representing texts as they are cited by schola
 
 The passage component is a hierarchy of one or more levels expressing a logical citation scheme applying to all versions of a text.  A poem might be cited by the single unit of "poetic line."  A prose work might be cited by a hierarchy such as "book/chapter/section/subsection."  Passage references at any level of the text's citation hierarchy *may* identify either a single citable node or a range indicated by the first and last nodes of the range.
 
-If the work component of the CTS URN is at the version or exemplar level, reference to a single citable node *may* be extended with indexed occurrences of a substring or a range of substrings; in a reference to a range of nodes, either or both of the first and last nodes *may* be extended in the same way.  Indexed substring references are permitted only with URNs at the version or example level because they are inherently language-specific. 
+If the work component of the CTS URN is at the version or exemplar level, reference to a single citable node *may* be extended with indexed occurrences of a substring or a range of substrings; in a reference to a range of nodes, either or both of the first and last nodes *may* be extended in the same way.  Indexed substring references are permitted only with URNs at the version or exemplar level because they are inherently language-specific. 
 
 ## Syntax of a CTS URN
 
@@ -57,7 +57,7 @@ where `TEXTGROUP` is a mandatory value, `WORK`, `VERSION` and `EXEMPLAR` are opt
 The passage component *may* be a null string.  It *may* have a non-null value only if the work component includes two or more parts.  If the passage component is not null, it *must* identify either a citable node of the text, or a range of citable nodes.  
 
 #### Passage reference identifying a citable node
-A node reference consists of one or two parts.  The first part is mandatory, and identifies a citable node in the text.  The second part is optional and identifies a subsection of the citable node.  If the node reference includes a subsection, the node reference and subsection *must* be separated by the "at" sign ("@", Unicode x0040).  If the node reference includes a subection, the value of the subsection *must not* be null.
+A node reference consists of one or two parts.  The first part is mandatory, and identifies a citable node in the text.  The second part is optional and identifies a subsection of the citable node.  If the node reference includes a subsection, the node reference and subsection *must* be separated by the "at" sign ("@", Unicode x0040).  If the node reference includes a subsection, the value of the subsection *must not* be null.
 
 The overall structure of a node reference could be summarized as 
 
@@ -72,7 +72,7 @@ Reference to a citable node consists of one or more parts.  Each part *must* be 
 
 ##### Subsection of a citable node #####
   
-A subreference consists of one or two subreference elements.   If there are two subreference element, they *must* be separated by the hyphen-minus sign ("-", Unicode x002D).
+A subreference consists of one or two subreference elements.   If there are two subreference elements, they *must* be separated by the hyphen-minus sign ("-", Unicode x002D).
 
 Each subreference element consists of a mandatory literal string and an optional index value.  The value of the literal string *must* be span of text within the cited passage.  If an index value is include, it *must* be enclosed in square brackets ("[", Unicode x005B, and "]", Unicode x005D), and must evaluate to a positive integer.  
 
