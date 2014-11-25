@@ -115,9 +115,12 @@ The CTS URN specification additionally reserves the following code points, and l
 - the colon (":", Unicode x003A)
 - the full stop (".", Unicode x002E) 
 - the "at" sign ("@", Unicode x0040)
-- the hyphen-minus sign ("-", Unicode x002D)
 - the left square bracket ("[", Unicode x005B)
 - the right square bracket ("]", Unicode x005D)
+
+The CTS URN specification additionally reserves the following code points *in the Passage component of a CTS URN only*, and limits their usage in this component to the syntactic functions previously specified:
+
+- the hyphen-minus sign ("-", Unicode x002D)
 
 Note that the generic URN specification excludes the left and right square bracket code points, whereas in CTS URNs, they are used, but their use is reserve.
 
