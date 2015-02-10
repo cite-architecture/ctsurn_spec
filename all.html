@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Canonical Text Services protocol specification</title>
+
+    <link type="text/css" rel="stylesheet" href="assets/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/sunburst.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/docs.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/print.css" media="print">
+    
+
+    <script type="text/javascript" src="assets/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+    <script type="text/javascript" src="assets/js/lunr.min.js"></script>
+
+    
+
+    <script type="text/javascript">var BASE_URL = "";</script>
+    <script type="text/javascript" src="assets/js/viewer.js"></script>
+
+    
+</head>
+<body>
+    <div id="page">
+        <a name="top" />
+        <header id="header">
+            <h1><a href="">Canonical Text Services protocol specification</a></h1>
+        </header>
+        
+
+<div id="sidebar">
+    <form action="search.html"><input id="search" type="text" placeholder="Search" name="q" /></form>
+    <nav id="toc">
+        
+    <ol>
+    
+        <li>
+            <a href="specification.html#the-canonical-text-services-urn-specification-version-20rc1">The Canonical Text Services URN specification, version 2.0.rc.1</a>
+            
+                
+    <ol>
+    
+        <li>
+            <a href="specification.html#background">Background</a>
+            
+        </li>
+    
+        <li>
+            <a href="specification.html#semantics-of-a-cts-citation">Semantics of a CTS citation</a>
+            
+        </li>
+    
+        <li>
+            <a href="specification.html#syntax-of-a-cts-urn">Syntax of a CTS URN</a>
+            
+        </li>
+    
+        <li>
+            <a href="specification.html#examples-with-comments">Examples with comments</a>
+            
+        </li>
+    
+        <li>
+            <a href="specification.html#links">Links</a>
+            
+        </li>
+    
+        <li>
+            <a href="specification.html#acknowledgments">Acknowledgments</a>
+            
+        </li>
+    
+</ol>
+
+            
+        </li>
+    
+</ol>
+
+    </nav>
+    
+    <nav id="links">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+</div>
+
+        <div id="content">
+            <h1 id="the-canonical-text-services-urn-specification-version-2-0-rc-1">The Canonical Text Services URN specification, version 2.0.rc.1</h1>
+<p><strong>Content</strong>:  This document defines version 2.0.rc.1 of the Canonical Text Services URN.</p>
+<p><strong>Editors</strong>:  Christopher Blackwell and Neel Smith, Center for Hellenic Studies Technical Working Group leads.</p>
+<p><strong>Date</strong>:  February, 2014.</p>
+<p><strong>License</strong>:  This specification is available under the terms of the Creative Commons Attribution-ShareAlike 4.0 International License, <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US">http://creativecommons.org/licenses/by-sa/4.0/deed.en_US</a>.</p>
+<h2 id="background">Background</h2>
+<p> RFC2141 defines the goal of URNs as follows:</p>
+<blockquote>
+<p>Uniform Resource Names (URNs) are intended to serve as persistent, location-independent, resource identifiers.</p>
+</blockquote>
+<p>The Canonical Text Services URN (CTS URN) scheme defined here closely follows the syntactic requirements of a URN, but extends its goal to provide a system of persistent, <em>technology-independent</em> identifiers for texts and passages of texts.   Specifically, the semantics of the CTS URN scheme are recognized by implementations of the <a href="http://www.homermultitext.org/hmt-docs/specifications/cts/">Canonical Text Services</a> protocol, but CTS URNs can be used in any system, digital or other, that can parse the syntax of CTS URN values according to the syntax and semantics of this specification. </p>
+<h2 id="semantics-of-a-cts-citation">Semantics of a CTS citation</h2>
+<p>There are three major components to a citation with CTS  URN version 2.0.rc.1:  a component identifying a naming authority, a component identifying a work hierarchy, and a component identifying a passage within the identified work.   </p>
+<p>The naming authority component is a single identifer;  systems using CTS URNs must be able to resolve this value to a unique URI.</p>
+<p>The work component is a hierarchy representing texts as they are cited by scholars.  Conceptually, the work hierarchy partially overlaps with the Functional Requirements for Bibliographic Records (FRBR), but since FRBR aims to model bibliographic entries as they are cataloged by librarians, there are also noteworthy differences.  The work component begins with an identifier for any group of texts that are conventionally cited together in the naming authority&#39;s tradition.  Examples could be based on concepts such as &quot;author&quot; (e.g., the works of Mark Twain),  &quot;geographic origin&quot; (e.g., papyri from Oxyrhynchus), &quot;subject matter&quot; (e.g., Latin curse tablets), or any other grouping (e.g., a group of texts named the &quot;Federalist Papers&quot;).  This identifier <em>may</em> be  followed by an identifier for a specific notional work within that group, corresponding to the <em>work</em> level of FRBR.  This in turn <em>may</em> be followed with an identifier for a specific version of that work, either a translation or an edition, corresponding to the <em>expression</em> level of FRBR.  A version identifier <em>may</em> be followed by an identifier for a specific exemplar of the version, corresponding to the <em>item</em> level of FRBR.  (Note that there is no level of a CTS URN correponding to the FRBR <em>manifestation</em>.)</p>
+<p>The passage component is a hierarchy of one or more levels expressing a logical citation scheme applying to all versions of a text.  A poem might be cited by the single unit of &quot;poetic line.&quot;  A prose work might be cited by a hierarchy such as &quot;book/chapter/section/subsection.&quot;  Passage references at any level of the text&#39;s citation hierarchy <em>may</em> identify either a single citable node or a range indicated by the first and last nodes of the range.</p>
+<p>If the work component of the CTS URN is at the version or exemplar level, reference to a single citable node <em>may</em> be extended with indexed occurrences of a substring or a range of substrings; in a reference to a range of nodes, either or both of the first and last nodes <em>may</em> be extended in the same way.  Indexed substring references are permitted only with URNs at the version or exemplar level because they are inherently language-specific. </p>
+<h2 id="syntax-of-a-cts-urn">Syntax of a CTS URN</h2>
+<h3 id="overall-structure-of-a-cts-urn">Overall structure of a CTS URN</h3>
+<p>All URNs <em>must</em> begin with the string <code>urn:</code> followed by a protocol identifier (the &quot;urn namespace identifier&quot;), followed by a  colon (&quot;:&quot;, Unicode x003a).  The protocol identifier for the CTS URN <em>must</em> be <code>cts</code>.  The rest of the CTS URN consists of a CTS namespace, a work component, and a passage component.  </p>
+<p>The CTS namespace <em>must</em> be separated from the work component by a colon, and the work component <em>must</em> be separated from the passage component by a colon.  A value for the CTS namespace and for the work component is required.  The value of the passage component <em>may</em> be a null string; in this case, the work component <em>must</em> still be separated from the null string by a colon.</p>
+<p>The top-level structure of a CTS URN could be summarized as</p>
+<pre><code>urn:cts:CTSNAMESPACE:WORK:PASSAGE
+</code></pre><p>where <code>CTSNAMESPACE</code> and <code>WORK</code> are required values, <code>PASSAGE</code> is an optional value, and the other characters are literals.</p>
+<h3 id="the-work-component">The work component</h3>
+<p>The work component consists of one to four parts.  Each part <em>must</em> be separated from a following part by a full stop  (&quot;.&quot;, Unicode x002e).  A full stop <em>must not</em> be appended to the part value if there is no following part.  The value for the first part of the work component is mandatory, and <em>must</em> be a valid value for a textgroup in the URN&#39;s CTS namespace.  The second part of the work component is optional; its value <em>must</em> be a valid value for a notional work within the parent textgroup.  The third part of the work component is allowed if the URN also includes a value for a work, and <em>must</em> be a valid value for a version (edition or translation) in the parent notional work.  The fourth part of the work component is allowed if the URN also includes a value for a version, and <em>must</em> be a valid value for an exemplar in the parent version.</p>
+<p>The structure of the work component of a CTS URN could be summarized as</p>
+<pre><code>TEXTGROUP.WORK.VERSION.EXEMPLAR
+</code></pre><p>where <code>TEXTGROUP</code> is a mandatory value, <code>WORK</code>, <code>VERSION</code> and <code>EXEMPLAR</code> are optional values, and the remaining characters are literals.</p>
+<h3 id="the-passage-component">The passage component</h3>
+<p>The passage component <em>may</em> be a null string.  It <em>may</em> have a non-null value only if the work component includes two or more parts.  If the passage component is not null, it <em>must</em> identify either a citable node of the text, or a range of citable nodes.  </p>
+<h4 id="passage-reference-identifying-a-citable-node">Passage reference identifying a citable node</h4>
+<p>A node reference consists of one or two parts.  The first part is mandatory, and identifies a citable node in the text.  The second part is optional and identifies a subsection of the citable node.  If the node reference includes a subsection, the node reference and subsection <em>must</em> be separated by the &quot;at&quot; sign (&quot;@&quot;, Unicode x0040).  If the node reference includes a subsection, the value of the subsection <em>must not</em> be null.</p>
+<p>The overall structure of a node reference could be summarized as </p>
+<pre><code>CITABLENODE@SUBSECTION
+</code></pre><p>where <code>CITABLENODE</code> is mandatory, and <code>@SUBSECTION</code> is optional.</p>
+<h5 id="citable-node-identifier">Citable node identifier</h5>
+<p>Reference to a citable node consists of one or more parts.  Each part <em>must</em> be separated from a following part by a full stop.  A full stop <em>must not</em> be appended to the part value if there is no following part.  The value for the first part <em>must</em> be a valid value in the top level of the text&#39;s citation hierarchy.  The value of any following parts <em>must</em> be valid values at the corresponding level of the citation hierarchy within the parent node of the text.  There is no limit on the depth of a text&#39;s citation hierarchy, and therefore no limit on the number of parts in a node reference.</p>
+<h5 id="subsection-of-a-citable-node">Subsection of a citable node</h5>
+<p>A subreference consists of one or two subreference elements.   If there are two subreference elements, they <em>must</em> be separated by the hyphen-minus sign (&quot;-&quot;, Unicode x002D).</p>
+<p>Each subreference element consists of a mandatory literal string and an optional index value.  The value of the literal string <em>must</em> be span of text within the cited passage.  If an index value is include, it <em>must</em> be enclosed in square brackets (&quot;[&quot;, Unicode x005B, and &quot;]&quot;, Unicode x005D), and must evaluate to a positive integer.  </p>
+<p>The overall structure of a subreference element could be summarized as </p>
+<p>STRING[INDEX]</p>
+<p>where <code>STRING</code> is required and <code>[INDEX]</code> is optional.  Note that if no index value is included, the meaning of the subreference element <code>STRING</code>  equivalent to  subreference element <code>STRING[1]</code>.</p>
+<p>A subreference range is identified by an ordered pair of subsection elements.  The two node references <em>must</em> be separated by the hyphen-minus sign (&quot;-&quot;, Unicode x002D).  The value of each subreference element <em>must</em> identify a subsection of the cited node.  The value of the first subreference element must precede the value of the second subreference element in the cited node.</p>
+<h4 id="passage-reference-identifying-a-range-of-citable-nodes">Passage reference identifying a range of citable nodes</h4>
+<p>Ranges of two or more nodes are identified by an ordered pair of node references as previously defined. The value for the first node reference <em>must</em> identify the first node in the range; the value for the second node reference <em>must</em> identify the second node in the range.  The two node references <em>must</em> be separated by the hyphen-minus sign (&quot;-&quot;, Unicode x002D).</p>
+<p>The structure of a passage reference could be summarized as </p>
+<pre><code>NODE1-NODE2
+</code></pre><p>where each of  <code>NODE1</code> and <code>NODE2</code>is a valid reference to a citable node as previously defined, and the hyphen is literal.</p>
+<h3 id="character-set">Character set</h3>
+<p>CTS URNs <em>must</em> be expressed in the Unicode character set.  </p>
+<h4 id="reserved-code-points">Reserved code points</h4>
+<p>Following the generic URN syntax, CTS URN reserves the use of the following code points:  they <em>must not</em> be included in the data components of a CTS URN.</p>
+<ul>
+<li>the percent sign (&quot;%&quot; , Unicode x0025)</li>
+<li>the solidus (&quot;/&quot; , Unicode x002F)</li>
+<li>the question mark (&quot;?&quot; , Unicode x003F)</li>
+<li>the number sign (&quot;#&quot;, Unicode x0023)</li>
+</ul>
+<p>The CTS URN specification additionally reserves the following code points, and limits their usage to the syntactic functions previously specifie:</p>
+<ul>
+<li>the colon (&quot;:&quot;, Unicode x003A)</li>
+<li>the full stop (&quot;.&quot;, Unicode x002E) </li>
+<li>the &quot;at&quot; sign (&quot;@&quot;, Unicode x0040)</li>
+<li>the hyphen-minus sign (&quot;-&quot;, Unicode x002D)</li>
+<li>the left square bracket (&quot;[&quot;, Unicode x005B)</li>
+<li>the right square bracket (&quot;]&quot;, Unicode x005D)</li>
+</ul>
+<p>Note that the generic URN specification excludes the left and right square bracket code points, whereas in CTS URNs, they are used, but their use is reserve.</p>
+<h4 id="excluded-code-points">Excluded code points</h4>
+<p>Following the generic URN specification, CTS URNs <em>exclude</em> the following code points:</p>
+<ul>
+<li>all code points &lt; x0020</li>
+<li>the reverse solidus (&quot;\&quot;, Unicode x005C)</li>
+<li>the quotation mark (<code>&quot;</code>, Unicode x0022) </li>
+<li>the ampersand (&quot;&amp;&quot; , Unicode x0026)</li>
+<li>the less-than sign (&quot;&lt;&quot;, Unicode x003C)</li>
+<li>the greater-than sign (&quot;&gt;&quot; , Unicode x003E)</li>
+<li>the circumflex accent (&quot;^&quot; , Unicode x005E)</li>
+<li>the grave accent (&quot;`&quot; , Unicode x0060)</li>
+<li>the vertical line (&quot;|&quot; , Unicode x007C)</li>
+<li>the left curly bracket  (&quot;{ , Unicode x007B)</li>
+<li>the right curly bracket  (&quot;{ , Unicode x007D)</li>
+<li>the tilde  (&quot;~ , Unicode x007E)</li>
+</ul>
+<h2 id="examples-with-comments">Examples with comments</h2>
+<p>The following examples illustrate use URN values in the text corpus of the Homer Multitext published as  &quot;Homer Multitext project archive, 2014, volume 1&quot;.   The CTS namespace abbreviation is used throughout these examples to refer to naming authority uniquely identified in that publication with the URI <code>http://chs.harvard.edu/ctsns/greekLit</code>.</p>
+<p>A valid CTS URN identifying the text group &quot;Homer poetry&quot;:</p>
+<pre><code>urn:cts:greekLit:tlg0012:
+</code></pre><p>A valid CTS URN identifying the <em>Iliad</em>:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001:
+</code></pre><p>A valid CTS URN identifying a specific English translation of the <em>Iliad</em>:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:
+</code></pre><p>The <em>Iliad</em> is cited in a two-level hierarchy of &quot;book&quot; and &quot;line&quot;.  A valid CTS URN identifying one citable node line in the English translation:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:10.1
+</code></pre><p>A valid CTS URN identifying one citable node at the top level of the citation hierarchy, i.e., all of book 10:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:10
+</code></pre><p>A valid CTS URN identifying a range of lines in the English translation:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:10.1-10.10
+</code></pre><p>Two semantically equivalent CTS URNs identifying the first occurrence of a substring within a citable node:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:10.4@Atreus[1]
+urn:cts:greekLit:tlg0012.tlg001.hmt01:10.4@Atreus
+</code></pre><p>A valid CTS URN identifying the second occurrence of substring in a citable node:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:10.1@the[2]
+</code></pre><p>A valid CTS URN identifying a range of text spanning multiple lines:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:10.4@Atreus-10.10
+</code></pre><p>A valid CTS URN identifying an equivalent range of text:</p>
+<pre><code>urn:cts:greekLit:tlg0012.tlg001.hmt01:10.4@Atreus-10.10@trembling.
+</code></pre><h2 id="links">Links</h2>
+<ul>
+<li>Maven settings for using the release version of this specification and its schemas from a maven client: <ul>
+<li>group: <code>org.homermultitext</code></li>
+<li>artifact: <code>ctsurn_spec</code></li>
+<li>version: <code>2.0.rc.1</code></li>
+</ul>
+</li>
+<li>Nexus repository to proxy this release:  <a href="http://beta.hpcc.uh.edu/nexus/content/repositories/releases">http://beta.hpcc.uh.edu/nexus/content/repositories/releases</a></li>
+<li>Known mirrors of this specification:<ul>
+<li>from the Homer Multitext project:  <a href="http://www.homermultitext.org/hmt-docs/specifications/ctsurn">http://www.homermultitext.org/hmt-docs/specifications/ctsurn</a></li>
+<li>from Furman University: <a href="http://folio.furman.edu/projects/citedocs/ctsurn">http://folio.furman.edu/projects/citedocs/ctsurn</a></li>
+<li>from the College of the Holy Cross:  <a href="http://shot.holycross.edu/hmt/hmt-docs/specifications/ctsurn">http://shot.holycross.edu/hmt/hmt-docs/specifications/ctsurn</a></li>
+</ul>
+</li>
+<li>RFC2141, &quot;URN Syntax&quot;: <a href="http://www.ietf.org/rfc/rfc2141.txt">http://www.ietf.org/rfc/rfc2141.txt</a> </li>
+<li>The Canonical Text Services protocol specification: <a href="http://www.homermultitext.org/hmt-docs/specifications/cts">http://www.homermultitext.org/hmt-docs/specifications/cts</a> </li>
+<li>Report of the IFLA Study Group on the Functional Requirements for Bibliographic Records (FRBR): <a href="http://www.ifla.org/publications/functional-requirements-for-bibliographic-records">http://www.ifla.org/publications/functional-requirements-for-bibliographic-records</a></li>
+</ul>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>The authors would especially like to acknowledge contributions from Gabriel Weaver in developing the URN notation.</p>
+
+
+
+
+
+        </div>
+        <footer id="footer">
+            Powered by <a href="http://github.com/maximebf/beautiful-docs">beautiful-docs</a> -
+            <a href="#top">Back to top</a> - <a href="all.html">Everything on a single page</a>
+            - <a href="?print=1">Print current page</a> - <a href="all.html?print=1">Print all pages</a>
+            
+        </footer>
+    </div>
+</body>
+</html>
